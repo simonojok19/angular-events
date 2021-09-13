@@ -3,10 +3,19 @@ import { Component } from '@angular/core';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'events-list',
-  templateUrl: 'events-list.component.html',
+  template: `
+    <div>
+      <h1>Upcoming Angular Events</h1>
+      <hr />
+      <events-thumbnail
+        [event]="event1"
+        (eventClick)="handleEventClicked($event)"
+      ></events-thumbnail>
+    </div>
+  `,
 })
 export class EventsListComponent {
-  event: any = {
+  event1: any = {
     id: 1,
     name: 'Angular Connect',
     date: '9/26/2036',
@@ -19,4 +28,8 @@ export class EventsListComponent {
       country: 'England',
     },
   };
+
+  handleEventClicked(data): void {
+    console.log('recieved ', data);
+  }
 }
