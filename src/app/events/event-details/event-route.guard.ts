@@ -21,10 +21,10 @@ export class EventRouteGuard implements CanActivate {
 
     if (!eventExist) {
       this.router
-        .navigate(['/events'])
+        .navigate(['/404'])
         .then((result) => console.log('Routed to /events', result));
     }
 
-    return true;
+    return eventExist;
   }
 }
