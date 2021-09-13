@@ -9,9 +9,10 @@ import { EventsService } from './events/shared/events.service';
 import { ToastrService } from './common/toastr.service';
 import { EvenDetailsComponent } from './events/event-details/even-details.component';
 import { RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
 
 @NgModule({
-  imports: [BrowserModule, RouterModule.forRoot()],
+  imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   declarations: [
     EventsAppComponent,
     EventsListComponent,

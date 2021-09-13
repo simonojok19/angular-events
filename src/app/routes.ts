@@ -5,4 +5,5 @@ import { EvenDetailsComponent } from './events/event-details/even-details.compon
 export const appRoutes: Routes = [
   { path: 'events', component: EventsListComponent },
   { path: 'events/:id', component: EvenDetailsComponent },
+  { path: '', redirectTo: '/events', pathMatch: 'full' },
 ];
