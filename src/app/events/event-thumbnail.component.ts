@@ -3,6 +3,16 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'events-thumbnail',
+  styles: [
+    `
+      .pad-left {
+        margin-left: 10px;
+      }
+      .well div {
+        color: #bbb;
+      }
+    `,
+  ],
   template: `
     <div class="well hoverwell thumbnail">
       <h2>{{ event.name }}</h2>
@@ -11,7 +21,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
       <div>Price: \${{ event.price }}</div>
       <div>
         <span>Location: {{ event.location.address }}</span>
-        <span>&nbsp;</span>
+        <span class="pad-left"></span>
         <span>{{ event.location.city }}, {{ event.location.country }}</span>
       </div>
     </div>
