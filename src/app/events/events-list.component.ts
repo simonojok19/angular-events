@@ -9,10 +9,7 @@ import { ToastrService } from '../common/toastr.service';
       <hr />
       <div class="row">
         <div class="col-md-5" *ngFor="let event of events">
-          <events-thumbnail
-            [event]="event"
-            (click)="handleThumbnailClick(event.name)"
-          ></events-thumbnail>
+          <events-thumbnail [event]="event"></events-thumbnail>
         </div>
       </div>
     </div>
@@ -28,9 +25,5 @@ export class EventsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.events = this.eventsService.getEvents();
-  }
-
-  handleThumbnailClick(eventName): void {
-    this.toastrService.success(eventName, 'Clicked');
   }
 }
