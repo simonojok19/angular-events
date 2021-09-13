@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EventsService } from './shared/events.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -9,17 +10,16 @@ import { Component } from '@angular/core';
       <hr />
       <div class="row">
         <div class="col-md-5" *ngFor="let event of events">
-          <events-thumbnail
-            [event]="event"
-            (eventClick)="handleEventClicked($event)"
-          ></events-thumbnail>
+          <events-thumbnail [event]="event"></events-thumbnail>
         </div>
       </div>
     </div>
   `,
 })
 export class EventsListComponent {
-  handleEventClicked(data): void {
-    console.log('recieved ', data);
+  events: any[];
+
+  constructor(private eventsService: EventsService) {
+    this.events = eventsService.getEvents();
   }
 }
