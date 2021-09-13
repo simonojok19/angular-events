@@ -11,6 +11,7 @@ import { EvenDetailsComponent } from './events/event-details/even-details.compon
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { CreateEventComponent } from './events/create-event.component';
+import { Error404Component } from './errors/404.component';
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
@@ -21,6 +22,7 @@ import { CreateEventComponent } from './events/create-event.component';
     NavbarComponent,
     EvenDetailsComponent,
     CreateEventComponent,
+    Error404Component,
   ],
   providers: [EventsService, ToastrService],
   bootstrap: [EventsAppComponent],
