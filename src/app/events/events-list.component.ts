@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EventsService } from './shared/events.service';
 import { ToastrService } from '../common/toastr.service';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   template: `
@@ -16,30 +17,13 @@ import { Subscription } from 'rxjs';
     </div>
   `,
 })
-export class EventsListComponent implements OnInit, OnDestroy {
+export class EventsListComponent implements OnInit {
   events: any[];
-  subscription: Subscription;
 
-  constructor(
-    private eventsService: EventsService,
-    private toastrService: ToastrService
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.subscription = this.eventsService.getEvents().subscribe(
-      (events) => {
-        this.events = events;
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        console.log('Observable complete');
-      }
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    console.log(this.activatedRoute);
+    this.events = this.activatedRoute.snapshot.data.events;
   }
 }
