@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { EventsService } from './shared/events.service';
 import { ToastrService } from '../common/toastr.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   template: `
@@ -15,8 +16,9 @@ import { ToastrService } from '../common/toastr.service';
     </div>
   `,
 })
-export class EventsListComponent implements OnInit {
+export class EventsListComponent implements OnInit, OnDestroy {
   events: any[];
+  subscription: Subscription;
 
   constructor(
     private eventsService: EventsService,
@@ -24,6 +26,20 @@ export class EventsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.events = this.eventsService.getEvents();
+    this.subscription = this.eventsService.getEvents().subscribe(
+      (events) => {
+        this.events = events;
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        console.log('Observable complete');
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
