@@ -14,7 +14,6 @@ export class EventsListResolverService implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     return this.eventService.getEvents().pipe(
       map((events) => {
-        console.log('Events ==> ', events);
         return events;
       })
     );
