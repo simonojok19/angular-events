@@ -17,6 +17,7 @@ import { appRoutes } from './routes';
 import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/404.component';
 import { EventRouteGuard } from './events/event-details/event-route.guard';
+import { EventsListResolverService } from './events/events-list-resolver.service';
 
 @NgModule({
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
@@ -37,6 +38,7 @@ import { EventRouteGuard } from './events/event-details/event-route.guard';
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtySate,
     },
+    EventsListResolverService,
   ],
   bootstrap: [EventsAppComponent],
 })

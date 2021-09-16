@@ -4,9 +4,14 @@ import { EvenDetailsComponent } from './events/event-details/even-details.compon
 import { CreateEventComponent } from './events/create-event.component';
 import { Error404Component } from './errors/404.component';
 import { EventRouteGuard } from './events/event-details/event-route.guard';
+import { EventsListResolverService } from './events/events-list-resolver.service';
 
 export const appRoutes: Routes = [
-  { path: 'events', component: EventsListComponent },
+  {
+    path: 'events',
+    component: EventsListComponent,
+    resolve: { events: EventsListResolverService },
+  },
   {
     path: 'events/new',
     component: CreateEventComponent,
