@@ -13,4 +13,8 @@ export class AuthService {
       lastName: 'Papa',
     };
   }
+
+  isAuthenticated(): boolean {
+    return !!this.currentUser;
+  }
 }
