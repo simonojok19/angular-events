@@ -1,7 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { EventsService } from './shared/events.service';
-import { ToastrService } from '../common/toastr.service';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { IEvent } from './shared';
 
